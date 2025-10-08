@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'Van Leeuwen Media',
 
-  projectId: '01t7fkjc',
-  dataset: 'production',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
+  dataset: process.env.SANITY_STUDIO_DATASET!,
 
   plugins: [structureTool(), visionTool()],
 
