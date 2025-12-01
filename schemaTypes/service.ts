@@ -45,9 +45,10 @@ export default defineType({
       validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
-      name: 'photoUrl',
-      title: 'Photo URL / AWS S3 photo link',
-      type: 'url',
+      name: 'photos',
+      title: 'Stills / AWS S3 stills link',
+      type: 'array',
+      of: [{type: 'url'}],
     }),
   ],
 })
