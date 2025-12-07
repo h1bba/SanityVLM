@@ -11,25 +11,11 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required().min(2).max(80),
     }),
-
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-        slugify: (input: string) =>
-          input
-            .toLowerCase()
-            .trim()
-            .replace(/\s+/g, '-') // spaties → -
-            .replace(/[^a-z0-9-]/g, '') // rare tekens weg
-            .slice(0, 96),
-      },
-      validation: (Rule) => Rule.required(),
+      name: 'thumbnailUrl',
+      title: 'Thumbnail URL / AWS S3 thumbnail link',
+      type: 'url',
     }),
-
     defineField({
       name: 'description',
       title: 'Omschrijving voor de diensten pagina',
@@ -49,6 +35,23 @@ export default defineType({
       title: 'Stills / AWS S3 stills link',
       type: 'array',
       of: [{type: 'url'}],
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+        slugify: (input: string) =>
+          input
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, '-') // spaties → -
+            .replace(/[^a-z0-9-]/g, '') // rare tekens weg
+            .slice(0, 96),
+      },
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })
